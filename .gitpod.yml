@@ -1,0 +1,18 @@
+# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
+tasks:
+  - name: Set up Takahē
+    init: |
+      git clone https://github.com/jointakahe/takahe
+      cd takahe/
+    command: |
+      docker-compose -f docker/docker-compose.yml up
+
+# Expose the port 8000 to the public access. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
+ports:
+  - name: takahe-web
+    description: Port 8000 for the Takahē server
+    port: 8000
+    onOpen: open-browser
+    visibility: public
+
+# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
