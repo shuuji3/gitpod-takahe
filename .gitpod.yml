@@ -4,6 +4,7 @@ tasks:
     init: |
       git clone https://github.com/jointakahe/takahe
       cd takahe/
+      sed -i bak -E "s=(127.0.0.1:8000|example.com)=$(gp url 8000)=g" docker/docker-compose.yml
     command: |
       docker-compose -f docker/docker-compose.yml up
 
@@ -12,7 +13,8 @@ ports:
   - name: takahe-web
     description: Port 8000 for the Takahē server
     port: 8000
-    onOpen: open-browser
+    onOpen: open-preview
+#    onOpen: open-browser
     visibility: public
 
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
